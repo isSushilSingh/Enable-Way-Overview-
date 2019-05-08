@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_documentation element="link" label="Link" language="en" table="x_183208_enableway_map_coordinates">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>link</element>
+            <help/>
+            <hint/>
+            <label>Link</label>
+            <language>en</language>
+            <name>x_183208_enableway_map_coordinates</name>
+            <plural>Links</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>sushil.s@enableps.com</sys_created_by>
+            <sys_created_on>2019-05-07 06:51:49</sys_created_on>
+            <sys_id>221c8a85db913300808c5c7a4896195e</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Link</sys_name>
+            <sys_package display_value="Enable Way Overview" source="x_183208_enableway">5259d537db013300808c5c7a489619a4</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="Enable Way Overview">5259d537db013300808c5c7a489619a4</sys_scope>
+            <sys_update_name>sys_documentation_x_183208_enableway_map_coordinates_link_en</sys_update_name>
+            <sys_updated_by>sushil.s@enableps.com</sys_updated_by>
+            <sys_updated_on>2019-05-07 06:51:49</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

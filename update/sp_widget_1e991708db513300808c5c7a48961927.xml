@@ -1,0 +1,764 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>*,
+:after,
+:before {
+	box-sizing: border-box;
+}
+
+
+/**
+ * Material Design Shadow Mixin
+ * Ref: https://codepen.io/HugoGiraudel/pen/yyaGaP
+ */
+
+@function top-shadow($depth) {
+	$primary-offset: nth(1.5 3 10 14 19, $depth) * 1px;
+	$blur: nth(1.5 3 10 14 19, $depth) * 4px;
+	$color: rgba(black, nth(.12 .16 .19 .25 .30, $depth));
+	@return 0 $primary-offset $blur $color;
+}
+
+@function bottom-shadow($depth) {
+	$primary-offset: nth(1.5 3 6 10 15, $depth) * 1px;
+	$blur: nth(1 3 3 5 6, $depth) * 4px;
+	$color: rgba(black, nth(.24 .23 .23 .22 .22, $depth));
+	@return 0 $primary-offset $blur $color;
+}
+
+@mixin card($depth) {
+	@if $depth &lt; 1 {
+		box-shadow: none;
+	}
+	@else if $depth&gt;5 {
+		@warn "Invalid $depth `#{$depth}` for mixin `card`.";
+	}
+	@else {
+		box-shadow: bottom-shadow($depth), top-shadow($depth);
+	}
+}
+
+$textlight: #FFFFFF;
+$textmed: #B6D0D6;
+$textdark: #294E55;
+$darkblue: #2C3E50;
+$darkbluehover: lighten($darkblue, 10%);
+$button: #E74C3C;
+$buttonhover: darken($button, 10%);
+$textbutton: #ECF0F1;
+$recommended: #3498DB;
+$textrecommended: lighten($recommended, 40%);
+body {
+	margin: 0 auto;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #ECF0F1;
+}
+
+.container {
+	margin: 0 auto;
+	max-width: 1200px;
+}
+
+.products-title {
+	text-align: center;
+	margin: 2em 0 0;
+	color: $textdark;
+	h2 {
+		margin: 0;
+	}
+}
+
+.carousel {
+	.flickity-prev-next-button {
+		display: none;
+		.arrow {
+			fill: $textdark;
+		} // .arrow
+	} //.flickity-prev-next-button
+	.flickity-page-dots {
+		display: none;
+		position: relative;
+		bottom: 5px;
+		margin: 1em 0;
+		.dot {
+			opacity: 1;
+			background-color: $textmed;
+			&amp;.is-selected {
+				background-color: $textdark;
+			} // .dots.is-selected
+		} // .dots
+	} // .flickity-page-dots
+}
+
+figure.product-card {
+	width: 100%;
+	margin: 8% 0 5%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	transform: scale(1);
+	cursor: pointer;
+	transition: transform 0.5s ease;
+	&amp;.is-selected {
+		transform: scale(1);
+		transition: transform 0.5s ease;
+	}
+	.fig-head {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: $darkblue;
+		text-align: center;
+		padding: 10% 5%;
+		transition: all 0.5s ease;
+	} // fig-head
+	h2 {
+		color: $textlight;
+		font-size: 20px;
+		line-height: 23px;
+		margin: 0;
+	} // h2
+	.fig-body {
+		width: 100%;
+		height: 250px;
+		padding: 8%;
+		display: block;
+		background: $textlight;
+		position: relative;
+		transition: all 0.5s ease;
+		.button-text {
+			display: flex;
+			position: absolute;
+			bottom: 5%;
+			width: 80%;
+			margin: 0 auto;
+			font-weight: 700;
+			font-size: 12px;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+			transition: all 0.5s ease;
+			a {
+				display: inline-block;
+				width: 100%;
+				text-align: center;
+				cursor: pointer;
+				background-color: $button;
+				color: $textbutton;
+				padding: 1.5em;
+				transition: all 0.5s ease;
+				text-decoration: none;
+				&amp;:hover {}
+			}
+		}
+		&amp;:hover {
+			@include card(4);
+			.fig-head {
+				background-color: $darkbluehover;
+			} // .fig-head hover
+			.button-text {
+				@include card(1);
+				background-color: $buttonhover;
+				color: lighten($textbutton, 10%);
+			}
+			// border :3px solid #f77e01;
+			transform:scale(1.1);
+		} // :hover
+	} // fig-body
+} // .product-card
+#recommended {
+	position: absolute;
+	display: inline-block;
+	top: -48px;
+	width: 100%;
+	left: 0;
+	right: 0;
+	padding: 16px 0;
+	margin: auto;
+	max-width: 190px;
+	background-color: $recommended;
+	font-size: 13px;
+	color: $textrecommended;
+	letter-spacing: 4px;
+	text-align: center;
+	text-transform: uppercase;
+} // #recommended
+ul.product-checklist {
+	position: absolute;
+	list-style-type: none;
+	top: 30%;
+	padding: 0 34px;
+	li {
+		position: relative;
+		font-size: 16px;
+		color: #BFBFBF;
+		font-weight: 300;
+		letter-spacing: 0px;
+		line-height: 25px;
+		margin-bottom: 25px;
+		-webkit-font-smoothing: antialiased;
+		&amp;:nth-last-of-type(1) {
+			margin-bottom: 0;
+		}
+	} // li
+	li.check {
+		color: $darkblue;
+		font-weight: 400;
+		&amp;:before {
+			content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAOCAYAAADwikbvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMRJREFUeNpiYCADaDbsVADRjGRonA+kAoDYkZFEjQlAaj6U+4GJTI0gUMhIpEYDIHUeSSjxeoP7AiYiNe5HEloA0kgwwKChCrJRAEljIkyeCaooAIgF0DSC+OuRNB5A1gjWDA0IkKL9MAOgNMipBlB1F4A4EN1ljECF75FMBylyhIZqALIY0NYP6JqZoIphEiCb7iNp/AAN2Q/YwoQRLUSR/f0BauMFXAHKiCVKYAaANB7AFxvweIba4Ijk1AOE0gBAgAEAgNJJfyEiUycAAAAASUVORK5CYII=');
+			position: absolute;
+			left: -34px;
+			top: 3px;
+		} // :before
+	} // li.check
+} // ul.product-checklist
+.product-description {
+	position: relative;
+	margin: 125px 0 32px;
+	// height: 286px;
+}
+
+@media only screen and (max-width: 850px) {
+	.container {
+		width: initial;
+		padding: 0;
+		margin: 0;
+	}
+	.carousel {
+		.flickity-prev-next-button {
+			display: block;
+		} //.flickity-prev-next-button
+		.flickity-page-dots {
+			display: block;
+			bottom: 30px;
+		} // .flickity-page-dots
+	} // .carousel
+	figure.product-card {
+		-webkit-transform: scale(0.9);
+		transform: scale(0.9);
+		width: 40%;
+		margin: 10% 0 7%;
+		&amp;.is-selected {
+			-webkit-transform: scale(1);
+			transform: scale(1);
+			z-index: 100;
+			@include card(4);
+			.fig-head {
+				background-color: $darkbluehover;
+			}
+		}
+		&amp;:hover {
+			box-shadow: none;
+		}
+		.fig-head {
+			padding: 8% 1%;
+		} // fig-head
+		h2 {
+			font-size: 16px;
+			line-height: 23px;
+		} // h2
+		.fig-body {
+			width: 100%;
+			height: 420px;
+			padding: 10%;
+			background: #ffffff;
+			position: relative;
+			.button-text {
+				left: 0;
+				right: 0;
+				margin: 0 9%;
+				a {
+					width: 100%;
+					text-align: center;
+				}
+			}
+		} // fig-body
+	} // .product-card
+	#recommended {
+		top: -45px;
+		padding: 15px 0;
+		max-width: 100%;
+		font-size: 12px;
+		letter-spacing: 4px;
+	} // .recommended
+	ul.product-checklist {
+		padding-left: 22px;
+		width: 80%;
+		top: 110px;
+		li {
+			font-size: 14px;
+			line-height: 32px;
+			margin-bottom: 5px;
+		} // li
+		li.check {
+			&amp;:before {
+				left: -23px;
+				top: 2px;
+			} // :before
+		} // li.check
+	} // ul.product-checklist
+	.product-description {
+		position: relative;
+		margin: 80px 0 0;
+		p {
+			font-size: 13px;
+			line-height: 20px;
+		}
+	}
+}
+
+@media only screen and (max-width: 640px) {
+	.carousel {
+		.flickity-prev-next-button {
+			display: block;
+		}
+		.flickity-page-dots {
+			display: block;
+		}
+	}
+	figure.product-card {
+		transform: scale(0.9);
+		width: 70%;
+		max-width: 300px;
+		margin: 20% 0;
+		&amp;.is-selected {
+			transform: scale(1);
+			z-index: 100;
+		}
+		.fig-head {
+			padding: 8% 1%;
+		} // fig-head
+		h2 {
+			font-size: 14px;
+			letter-spacing: 1px;
+			line-height: 15px;
+		} // h2
+		.fig-body {
+			height: 420px;
+			padding: 10%;
+		} // fig-body
+	} // .product-card
+	#recommended {
+		top: -40px;
+		padding: 12px 0;
+		font-size: 13px;
+		letter-spacing: 4px;
+	} // .recommended
+	ul.product-checklist {
+		padding-left: 22px;
+		width: 80%;
+		top: 110px;
+		li {
+			font-size: 13px;
+			line-height: 26px;
+		} // li
+		li.check {
+			&amp;:before {
+				left: -23px;
+				top: 2px;
+			} // :before
+		} // li.check
+	} // ul.product-checklist
+	.product-description {
+		margin: 60px 0 0;
+		p {
+			font-size: 12px;
+			line-height: 20px;
+		}
+	}
+}
+
+//Box
+.box {
+	position: absolute;
+	width: 180px;
+	height: 180px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	border-radius: 3px;
+	overflow: hidden;
+	padding: 2%;
+	-webkit-transition: -webkit-box-shadow ease 1s;
+	transition: -webkit-box-shadow ease 1s;
+	transition: box-shadow ease 1s;
+	transition: box-shadow ease 1s, -webkit-box-shadow ease 1s;
+}
+
+.icon {
+	position: relative;
+	margin-top: 8px;
+	-webkit-transition: all 0.6s ease;
+	transition: all 0.6s ease;
+	-webkit-transition-delay: 0.32s;
+	transition-delay: 0.32s;
+	will-change: transform;
+}
+
+.icon_bg {
+	width: 80px;
+	height: 80px;
+	border-radius: 100%;
+	border: 1px solid rgba(225, 227, 232, 0.18);
+	-webkit-box-shadow: 0 3px 4px 0 rgba(44, 71, 146, 0.25);
+	box-shadow: 0 3px 4px 0 rgba(44, 71, 146, 0.25);
+	background-color: #fff;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-transition: all 0.6s ease;
+	transition: all 0.6s ease;
+	-webkit-transition-delay: 0.32s;
+	transition-delay: 0.32s;
+	will-change: transform;
+}
+
+.title {
+	position: relative;
+}
+
+.super-box:hover .box {
+	/*   border: 1px solid rgba(225, 227, 232, 0.18); */
+	-webkit-box-shadow: 0 3px 4px 0 rgba(44, 71, 146, 0.25);
+	box-shadow: 0 3px 4px 0 rgba(44, 71, 146, 0.25);
+	-webkit-transition-delay: 0.32s;
+	transition-delay: 0.32s;
+}
+
+.super-box:hover .icon_bg {
+	-webkit-transform: translateY(-32px) scale(6);
+	transform: translateY(-32px) scale(6);
+}
+
+.super-box:hover .icon {
+	-webkit-transform: translateY(-48px) scale(1.4);
+	transform: translateY(-48px) scale(1.4);
+}
+
+.super-box {
+	width: 220px;
+	height: 220px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+}
+
+.text {
+	position: relative;
+	top: -32px;
+	width: 200px;
+	text-align: center;
+	-webkit-transition: all 0.4s ease;
+	transition: all 0.4s ease;
+	-webkit-transition-delay: 0.32s;
+	transition-delay: 0.32s;
+}
+
+.super-box:hover .text {
+	opacity: 0;
+	-webkit-transform: translateY(-4px) scale(.8);
+	transform: translateY(-4px) scale(.8);
+}
+
+.box::after {
+	content: "Description of the step";
+	position: absolute;
+	width: 170px;
+	top: 111px;
+	opacity: 0;
+	font-size: 13px;
+	color: #5d6494;
+	line-height: 20px;
+	-webkit-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+	-webkit-transition-delay: 0.32s;
+	transition-delay: 0.32s;
+}
+
+.super-box:hover .box::after {
+	opacity: 1;
+}
+
+.dr {
+	position: absolute;
+	bottom: 16px;
+	right: 16px;
+	width: 100px;
+}
+
+.container {
+	width: 220px;
+	height: 220px;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>Project</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Project</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>deepak.n@enableps.com</sys_created_by>
+        <sys_created_on>2019-05-04 09:57:01</sys_created_on>
+        <sys_id>1e991708db513300808c5c7a48961927</sys_id>
+        <sys_mod_count>116</sys_mod_count>
+        <sys_name>Project</sys_name>
+        <sys_package display_value="Enable Way Overview" source="x_183208_enableway">5259d537db013300808c5c7a489619a4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Enable Way Overview">5259d537db013300808c5c7a489619a4</sys_scope>
+        <sys_update_name>sp_widget_1e991708db513300808c5c7a48961927</sys_update_name>
+        <sys_updated_by>sushil.s@enableps.com</sys_updated_by>
+        <sys_updated_on>2019-05-08 10:14:01</sys_updated_on>
+        <template><![CDATA[<h2 class='text-center'> The Enable Way for Projects</h2>
+<hr/>
+<div class="carousel row">
+   <div class='col-xs-2 col-xs-offset-1'>
+      <figure class="product-card carousel-cell">
+         <div class="fig-body">
+            <div class="fig-head">
+               <h2>Initiate</h2>
+            </div>
+            <ul class="product-checklist">
+               <li class="check">Project Planning</li>
+               <li class="check">Prepare for Kickoffs and workshops</li>
+            </ul>
+            <!-- <div class="button-text">
+               <a class="learn" href=""><span>Buy Now</span></a>
+               </div> -->
+         </div>
+      </figure>
+   </div>
+   <div class='col-xs-2'>
+      <figure class="product-card carousel-cell">
+         <div class="fig-body">
+            <div class="fig-head">
+               <h2>Prepare</h2>
+            </div>
+            <ul class="product-checklist">
+               <li class="check">Gather Requirements</li>
+               <li class="check">Design the configurations</li>
+            </ul>
+            <!-- <div class="button-text">
+               <a class="learn" href=""><span>Buy Now</span></a>
+               </div> -->
+         </div>
+      </figure>
+   </div>
+   <div class='col-xs-2'>
+      <figure class="product-card carousel-cell">
+         <div class="fig-body">
+            <div class="fig-head">
+               <h2>Create</h2>
+            </div>
+            <ul class="product-checklist">
+               <li class="check">Build in Sprints</li>
+            </ul>
+            <!-- <div class="button-text">
+               <a class="learn" href=""><span>Buy Now</span></a>
+               </div> -->
+         </div>
+      </figure>
+   </div>
+   <div class='col-xs-2'>
+      <figure class="product-card carousel-cell">
+         <div class="fig-body">
+            <div class="fig-head">
+               <h2>Transition</h2>
+            </div>
+            <ul class="product-checklist">
+               <li class="check">Test</li>
+               <li class="check">Release</li>
+            </ul>
+         </div>
+      </figure>
+   </div>
+   <div class='col-xs-2'>
+      <figure class="product-card carousel-cell">
+         <div class="fig-body">
+            <div class="fig-head">
+               <h2>Close</h2>
+            </div>
+            <ul class="product-checklist">
+               <li class="check">Review value</li>
+            </ul>
+            <!-- <div class="button-text">
+               <a class="learn" href=""><span>Buy Now</span></a>
+               </div> -->
+         </div>
+      </figure>
+   </div>
+</div>
+<!--<div class='row'>
+   <div class='col-xs-12 text-center'>
+       <h3>Project Management</h3>
+   </div>
+   </div> -->
+<!--
+   <div class='row'>
+       <div class='col-xs-6 col-xs-offset-3'>
+           <div class='row'>
+               <div class='col-xs-3'>
+   
+   
+                   <div class="super-box">
+                       <div class="container">
+                           <div class="box">
+                               <div class="icon_bg"></div>
+                           </div>
+   
+                           <div class="icon">
+   
+                               <span><img src='eway-cal.png' height='30px;'></span>
+                           </div>
+   
+                       </div>
+   
+                       <div class="text">
+                           <p class="title">
+                               Schedule & Resource
+                           </p>
+   
+                       </div>
+                   </div>
+   
+               </div>
+               <div class='col-xs-3'>
+   
+   
+                   <div class="super-box">
+                       <div class="container">
+                           <div class="box">
+                               <div class="icon_bg"></div>
+                           </div>
+   
+                           <div class="icon">
+   
+                               <span><img src='eway-quality.png' height='30px;'></span>
+                           </div>
+   
+                       </div>
+   
+                       <div class="text">
+                           <p class="title">
+                               Risk, issue, quality
+                           </p>
+   
+                       </div>
+                   </div>
+   
+               </div>
+               <div class='col-xs-3'>
+   
+   
+                   <div class="super-box">
+                       <div class="container">
+                           <div class="box">
+                               <div class="icon_bg">
+                            </div> 
+                             <div class = 'desc'>
+                             
+                             </div>
+                           </div>
+   
+                           <div class="icon">
+   
+                               <span><img src='eway-reporting.png' height='30px;'></span>
+                           </div>
+                       </div>
+   
+                       <div class="text">
+                           <p class="title">
+                               Reporting
+                           </p>
+   
+                       </div>
+                   </div>
+   
+               </div>
+               <div class='col-xs-3'>
+   
+   
+                   <div class="super-box">
+                       <div class="container">
+                           <div class="box">
+                               <div class="icon_bg"></div>
+                           </div>
+   
+                           <div class="icon">
+   
+                               <span><img src='eway-settings.png' height='30px;'></span>
+                           </div>
+                       </div>
+   
+                       <div class="text">
+                           <p class="title">
+                               Project Change Control
+                           </p>
+   
+                       </div>
+                   </div>
+   
+               </div>
+           </div>
+       </div>
+   </div> -->]]></template>
+    </sp_widget>
+</record_update>

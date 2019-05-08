@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Image Layouts" max_length="40" name="x_183208_enableway_image_layouts" type="collection">
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Deployment Type" max_length="40" name="deployment_type" type="string">
+            <choice>
+                <element inactive_on_update="false" label="Enterprise Deployment" sequence="0" value="enterprise deployment"/>
+                <element inactive_on_update="false" label="Rapid Deployment" sequence="1" value="rapid deployment"/>
+            </choice>
+        </element>
+        <element attributes="pdf_cell_type=image" label="Image" max_length="40" name="image" type="user_image"/>
+        <element attributes="no_sort=true,slushbucket_ref_no_expand=true" label="Map Coordinates" max_length="1024" name="mapcoordinates" reference="x_183208_enableway_map_coordinates" type="glide_list"/>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

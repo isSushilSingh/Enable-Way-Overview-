@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description>Default access control on x_183208_enableway_image_layouts</description>
+        <name>x_183208_enableway_image_layouts</name>
+        <operation display_value="create">create</operation>
+        <script/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>sushil.s@enableps.com</sys_created_by>
+        <sys_created_on>2019-05-07 05:26:15</sys_created_on>
+        <sys_id>8d883dc1db513300808c5c7a489619b0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_183208_enableway_image_layouts</sys_name>
+        <sys_package display_value="Enable Way Overview" source="x_183208_enableway">5259d537db013300808c5c7a489619a4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Enable Way Overview">5259d537db013300808c5c7a489619a4</sys_scope>
+        <sys_update_name>sys_security_acl_8d883dc1db513300808c5c7a489619b0</sys_update_name>
+        <sys_updated_by>sushil.s@enableps.com</sys_updated_by>
+        <sys_updated_on>2019-05-07 05:26:15</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_container">
+    <sp_container action="INSERT_OR_UPDATE">
+        <background_color/>
+        <background_image/>
+        <background_style>default</background_style>
+        <bootstrap_alt>false</bootstrap_alt>
+        <class_name/>
+        <container_class_name/>
+        <name>Labs Page - Container 1</name>
+        <order>1</order>
+        <sp_page display_value="labs_page">c8129e33dbc13300808c5c7a48961975</sp_page>
+        <subheader>false</subheader>
+        <sys_class_name>sp_container</sys_class_name>
+        <sys_created_by>sushil.s@enableps.com</sys_created_by>
+        <sys_created_on>2019-05-06 10:18:59</sys_created_on>
+        <sys_id>2fe171f0db997300808c5c7a4896198e</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Labs Page - Container 1</sys_name>
+        <sys_package display_value="Enable Way Overview" source="x_183208_enableway">5259d537db013300808c5c7a489619a4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Enable Way Overview">5259d537db013300808c5c7a489619a4</sys_scope>
+        <sys_update_name>sp_container_2fe171f0db997300808c5c7a4896198e</sys_update_name>
+        <sys_updated_by>sushil.s@enableps.com</sys_updated_by>
+        <sys_updated_on>2019-05-06 10:18:59</sys_updated_on>
+        <title/>
+        <width>container</width>
+    </sp_container>
+</record_update>

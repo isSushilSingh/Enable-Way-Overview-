@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>/*body {
+  font-family: 'Raleway', sans-serif;
+  background-image: radial-gradient(circle at center, #899Dc4, #495D84);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(ellipse at bottom, #1b2735, #090a0f);
+  font-weight: 300;
+}
+.all {
+  display: flex;
+  perspective: 10px;
+  transform: perspective(300px) rotateX(20deg);
+  will-change: perspective;
+  perspective-origin: center center;
+  transition: all 0.3s ease-out;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+.all:hover {
+  perspective: 1000px;
+  transition: all 0.3s ease-in;
+  transform: perspective(10000px) rotateX(0deg);
+  .text {
+    opacity: 1;
+  }
+  &amp; &gt; div {
+    opacity: 1;
+    transition-delay: 0s;
+  }
+  .explainer {
+    opacity: 0;
+    text-align: center;
+  }
+}
+
+.left, .center, .right, .lefter, .righter {
+  width: 200px;
+  height: 150px;
+  transform-style: preserve-3d;
+  border-radius: 10px;
+  border: 1px solid #fff;
+  box-shadow: 0 0 20px 5px rgba(100, 100, 255, .4);
+  opacity: 0;
+  transition: all .3s ease;
+  transition-delay: 1s;
+  position: relative;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  cursor: pointer;
+  //background-blend-mode: color-burn;
+  
+  &amp;:hover {
+    box-shadow: 0 0 30px 10px rgba(100, 100, 255, .6);
+  background-color: #fff;
+  }
+}
+.text {
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all .3s ease;
+  bottom: 0;
+  left: 5px;
+  position: absolute;
+  will-change: transform;
+  color: #000;
+  text-shadow: 0 0 5px rgba(100, 100, 255, .6)
+}
+.lefter {
+  transform: translateX(-60px) translateZ(-50px) rotateY(-10deg);
+  background-image: url(labs.jpg);
+}
+.left {
+  transform: translateX(-30px) translateZ(-25px) rotateY(-5deg);
+  background-image: url(people.jpg);
+      background-size: 50%;
+}
+.center {
+  opacity: 1;
+  background-image: url(enable.png);
+      background-size: 50%;
+}
+.right {
+  transform: translateX(30px) translateZ(-25px) rotateY(5deg);
+  background-image: url(case.png);
+      background-size: 50%;
+}
+.righter {
+  transform: translateX(60px) translateZ(-50px) rotateY(10deg);
+  background-image: url(project.png);
+      background-size: 50%;
+}
+.explainer {
+  font-weight: 300;
+  font-size: 2rem;
+  color: #fff;
+  transition: all .6s ease;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: #303050;
+  background-image: radial-gradient(circle at center top, #cce, #33a);
+  border-radius: 10px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, .8);
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.ref {
+  background-color: #000;
+  background-image: linear-gradient(to bottom, #d80, #c00);
+  border-radius: 3px;
+  padding: 7px 10px;
+  position: absolute;
+  font-size: 16px;
+  bottom: 10px;
+  right: 10px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 0 3px rgba(0, 0, 0, .4);
+  &amp;::first-letter {
+    font-size: 12px;
+  }
+}*/
+
+body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+body {
+	background: #E3DFD2;
+	box-shadow: inset 0 0 20vmin 0 #585247;
+}
+
+.wrap {
+	position: relative;
+	width: 60vmin;
+	height: 60vmin;
+	margin: 0 auto;
+	background: inherit;
+	transform: scale(0.2) translatez(0px);
+	opacity: 0;
+	transition: transform .5s, opacity .5s;
+}
+
+a {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 47.5%;
+	height: 47.5%;
+	overflow: hidden;
+	transform: scale(.5) translateZ(0px);
+	background: #585247;
+}
+
+a div {
+	height: 100%;
+	background-size: cover;
+	opacity: .5;
+	transition: opacity .5s;
+	border-radius: inherit;
+}
+
+a:nth-child(1) {
+	border-radius: 40vmin 0 0 0;
+	transform-origin: 110% 110%;
+	transition: transform .4s .15s;
+} //labs
+a:nth-child(1) div {
+	background-image: url('labs.jpg');
+}
+
+a:nth-child(2) {
+	border-radius: 0 40vmin 0 0;
+	left: 52.5%;
+	transform-origin: -10% 110%;
+	transition: transform .4s .2s;
+} //people
+a:nth-child(2) div {
+	background-image: url('people.jpg');
+}
+
+a:nth-child(3) {
+	border-radius: 0 0 0 40vmin;
+	top: 52.5%;
+	transform-origin: 110% -10%;
+	transition: transform .4s .25s;
+} //case
+a:nth-child(3) div {
+	background-image: url('case.png');
+}
+
+a:nth-child(4) {
+	border-radius: 0 0 40vmin 0;
+	top: 52.5%;
+	left: 52.5%;
+	transform-origin: -10% -10%;
+	transition: transform .4s .3s;
+} //project
+a:nth-child(4) div {
+	background-image: url('project.png');
+}
+
+a:nth-child(5) {
+	width: 55%;
+	height: 55%;
+	left: 22.5%;
+	top: 22.5%;
+	border-radius: 50vmin;
+	box-shadow: 0 0 0 5vmin #E3DFD2;
+	transform: scale(1);
+} //enable
+a:nth-child(5) div {
+	background-color: white;
+	background-image: url('enable.png');
+	background-size: 212px 51px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+span {
+	position: relative;
+	display: block;
+	margin: 0 auto;
+	top: 36vmin;
+	width: 10vmin;
+	height: 10vmin;
+	border-radius: 100%;
+	background: #585247;
+	transform: translateZ(0px);
+}
+
+span span {
+	position: absolute;
+	width: 60%;
+	height: 3px;
+	background: #ACA696;
+	left: 20%;
+	top: 50%;
+	border-radius: 0;
+}
+
+span span:after,
+span span:before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: -1.5vmin;
+	width: 100%;
+	height: 100%;
+	background: inherit;
+}
+
+span span:after {
+	top: 1.5vmin;
+}
+
+span:hover+.wrap,
+.wrap:hover {
+	transform: scale(.8) translateZ(0px);
+	opacity: 1;
+}
+
+span:hover+.wrap a,
+.wrap:hover a {
+	transform: scale(1) translatez(0px);
+}
+
+a:hover div {
+	opacity: 1;
+	transform: translatez(0px);
+}
+
+Resources 1×0.5×0.25× Rerun</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>fourways</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>FourWays</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>sushil.s@enableps.com</sys_created_by>
+        <sys_created_on>2019-05-03 07:47:51</sys_created_on>
+        <sys_id>7972793fdb413300808c5c7a489619a5</sys_id>
+        <sys_mod_count>75</sys_mod_count>
+        <sys_name>FourWays</sys_name>
+        <sys_package display_value="Enable Way Overview" source="x_183208_enableway">5259d537db013300808c5c7a489619a4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Enable Way Overview">5259d537db013300808c5c7a489619a4</sys_scope>
+        <sys_update_name>sp_widget_7972793fdb413300808c5c7a489619a5</sys_update_name>
+        <sys_updated_by>sushil.s@enableps.com</sys_updated_by>
+        <sys_updated_on>2019-05-08 10:08:37</sys_updated_on>
+        <template><![CDATA[<!--div class="all">
+   <div class="lefter" onclick="location.href='enableway?id=labs_page';">
+     	<div class="text">Labs</div>
+   </div>
+   <div class="left" onclick="location.href='enableway?id=people_page';">
+     <div class="text">People</div>
+   </div>
+   <div class="center">
+     <div class="explainer"><span>EnableWay Methodologies</span></div>
+     <div class="text">Enable</div>
+     </div>
+   <div class="right" onclick="location.href='enableway?id=case_page';">
+     <div class="text">CASE</div>
+   </div>
+   <div class="righter" onclick="location.href='enableway?id=project_page';">
+     <div class="text">Project</div>
+   </div>
+   </div-->
+<span><span></span></span>
+<div class="wrap">
+   <a href="enableway?id=labs_page">
+      <div title="Labs"></div>
+   </a>
+   <a href="enableway?id=people_page">
+      <div title="People"></div>
+   </a>
+   <a href="enableway?id=case_page">
+      <div title="Case"></div>
+   </a>
+   <a href="enableway?id=project_page">
+      <div title="Project"></div>
+   </a>
+   <a href="#">
+      <div></div>
+   </a>
+</div>]]></template>
+    </sp_widget>
+</record_update>

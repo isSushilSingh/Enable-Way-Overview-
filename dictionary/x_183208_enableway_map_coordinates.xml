@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element label="Map Coordinates" max_length="40" name="x_183208_enableway_map_coordinates" type="collection">
+        <element attributes="edge_encryption_enabled=true" label="Coords" max_length="1000" name="coords" type="string"/>
+        <element attributes="edge_encryption_enabled=true" label="Link" max_length="100" name="link" reference="kb_knowledge" type="reference"/>
+        <element attributes="edge_encryption_enabled=true" display="true" label="Name" max_length="40" name="name" type="string"/>
+        <element attributes="edge_encryption_enabled=true" choice="1" label="Shape" max_length="40" name="shape" type="string">
+            <choice>
+                <element inactive_on_update="false" label="circle" sequence="0" value="circle"/>
+                <element inactive_on_update="false" label="poly" sequence="1" value="poly"/>
+                <element inactive_on_update="false" label="rect" sequence="2" value="rect"/>
+            </choice>
+        </element>
+        <element default="javascript:current.getTableName();" label="Class" max_length="80" name="sys_class_name" type="sys_class_name"/>
+        <index name="index">
+            <element name="sys_class_name"/>
+        </index>
+    </element>
+</database>

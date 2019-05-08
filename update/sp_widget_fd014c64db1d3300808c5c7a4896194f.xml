@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>.card.green .additional .coords {
+	color: white;
+}
+
+.card.green .additional .more-info h2 {
+	color: white;
+}
+
+.card.green .additional .stats {
+	color: #ffffff;
+}
+
+.card.green .additional {
+	background: linear-gradient(#20529c, #0f1010);
+}
+
+.card .additional {
+	background: linear-gradient(#7a1a1a, #151313);
+}</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>project_buttons</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Project Buttons</name>
+        <option_schema/>
+        <public>false</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>deepak.n@enableps.com</sys_created_by>
+        <sys_created_on>2019-05-05 07:28:01</sys_created_on>
+        <sys_id>fd014c64db1d3300808c5c7a4896194f</sys_id>
+        <sys_mod_count>69</sys_mod_count>
+        <sys_name>Project Buttons</sys_name>
+        <sys_package display_value="Enable Way Overview" source="x_183208_enableway">5259d537db013300808c5c7a489619a4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Enable Way Overview">5259d537db013300808c5c7a489619a4</sys_scope>
+        <sys_update_name>sp_widget_fd014c64db1d3300808c5c7a4896194f</sys_update_name>
+        <sys_updated_by>deepak.n@enableps.com</sys_updated_by>
+        <sys_updated_on>2019-05-08 10:14:55</sys_updated_on>
+        <template><![CDATA[<div class = 'row'>
+   <a href = '?id=case_page&type=enterprise%20deployment'>
+      <div class = 'col-xs-6'>
+         <div class="center">
+            <div class="card">
+               <div class="additional">
+                  <div class="user-card">
+                     <div class="level center">
+                        Do you want?
+                     </div>
+                     <div class="points center">
+                     </div>
+                  </div>
+                  <div class="more-info">
+                     <h2>Enterprise Deployment</h2>
+                     <div class="coords">
+                        <span>Fixed price</span>
+                        <span>Multiple work streams</span>
+                     </div>
+                     <div class="coords">
+                        <span>Technical trainings</span>
+                        <span>User Tranings</span>
+                     </div>
+                     <div class="stats">
+                        <div>
+                           <div class="title">Awards</div>
+                           <i class="fa fa-trophy"></i>
+                           <div class="value">2</div>
+                        </div>
+                        <div>
+                           <div class="title">CSAT</div>
+                           <i class="fa fa-gamepad"></i>
+                           <div class="value">9.4</div>
+                        </div>
+                        <div>
+                           <div class="title">Customers</div>
+                           <i class="fa fa-group"></i>
+                           <div class="value">14</div>
+                        </div>
+                        <div>
+                           <div class="title">Certifications</div>
+                           <i class="fa fa-eye"></i>
+                           <div class="value infinity">23</div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="general">
+                  <h2>Enterprise Deployment</h2>
+                  <p>Enterprise Deployment for your organization</p>
+               </div>
+            </div>
+         </div>
+      </div>
+   </a>
+   <a href = '?id=case_page&type=rapid%20deployment'>
+   <div class= 'col-xs-6'>
+      <div class="center">
+         <div class="card green">
+            <div class="additional">
+               <div class="user-card">
+                  <div class="level center">
+                     Do you want?
+                  </div>
+                  <div class="points center">
+                  </div>
+               </div>
+               <div class="more-info">
+                  <h2>Rapid Deployment</h2>
+                  <div class="coords">
+                     <span>Variable Price	</span>
+                     <span>Multiple Work Streams</span>
+                  </div>
+                  <div class="coords">
+                     <span>Skills 3</span>
+                     <span>Skills 3</span>
+                  </div>
+                  <div class="stats">
+                     <div>
+                        <div class="title">Awards</div>
+                        <i class="fa fa-trophy"></i>
+                        <div class="value">8</div>
+                     </div>
+                     <div>
+                        <div class="title">CSAT</div>
+                        <i class="fa fa-gamepad"></i>
+                        <div class="value">9.1</div>
+                     </div>
+                     <div>
+                        <div class="title">Customers</div>
+                        <i class="fa fa-group"></i>
+                        <div class="value">22</div>
+                     </div>
+                     <div>
+                        <div class="title">Recognition</div>
+                        <i class="fa fa-eye"></i>
+                        <div class="value infinity">8</div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="general">
+               <h2>Rapid <br> Deployment</h2>
+               <p>Rapid deployment for your organization</p>
+            </div>
+         </div>
+      </div>
+   </div>
+  </a>
+</div>
+<style>
+   @import url('https://fonts.googleapis.com/css?family=Abel');
+   .center {
+   margin-top: 15%;
+   margin-left: 15%;
+   -webkit-transform: translate(-50%, -50%);
+   }
+   .card {
+   width: 450px;
+   height: 190px;
+   background-color: #fff;
+   background: linear-gradient(#f8f8f8, #fff);
+   box-shadow: 0 8px 16px -8px rgba(0,0,0,0.4);
+   border-radius: 6px;
+   overflow: hidden;
+   position: relative;
+   margin: 1.5rem;
+   margin-top: 25%;
+   margin-left: 50%;
+   }
+   .card h1 {
+   text-align: center;
+   }
+   .card .additional {
+   position: absolute;
+   width: 150px;
+   height: 100%;
+   background: linear-gradient(#dE685E, #EE786E);
+   transition: width 0.4s;
+   overflow: hidden;
+   z-index: 2;
+   }
+   .card.green .additional {
+   background: linear-gradient(#92bCa6, #A2CCB6);
+   }
+   .card:hover .additional {
+   width: 100%;
+   border-radius: 0 5px 5px 0;
+   }
+   .card .additional .user-card {
+   width: 150px;
+   height: 100%;
+   position: relative;
+   float: left;
+   }
+   .card .additional .user-card::after {
+   content: "";
+   display: block;
+   position: absolute;
+   top: 10%;
+   right: -2px;
+   height: 80%;
+   border-left: 2px solid rgba(0,0,0,0.025);*/
+   }
+   .card .additional .user-card .level,
+   .card .additional .user-card .points {
+   margin-top: 15%;
+   margin-left: 40%;
+   color: #fff;
+   text-transform: uppercase;
+   font-size: 0.75em;
+   font-weight: bold;
+   background: rgba(0,0,0,0.15);
+   padding: 0.125rem 0.75rem;
+   border-radius: 100px;
+   white-space: nowrap;
+   }
+   .card .additional .user-card .points {
+   top: 85%;
+   }
+   .card .additional .user-card svg {
+   top: 50%;
+   }
+   .card .additional .more-info {
+   width: 300px;
+   float: left;
+   position: absolute;
+   left: 150px;
+   height: 100%;
+   }
+   .card .additional .more-info h2 {
+   color: #fff;
+   margin-bottom: 0;
+   }
+   .card.green .additional .more-info h2 {
+   color: #224C36;
+   }
+   .card .additional .coords {
+   margin: 0 1rem;
+   color: #fff;
+   font-size: 1.2rem;
+   }
+   .card.green .additional .coords {
+   color: #325C46;
+   }
+   .card .additional .coords span + span {
+   float: right;
+   }
+   .card .additional .stats {
+   font-size: 2rem;
+   display: flex;
+   position: absolute;
+   bottom: 1rem;
+   left: 1rem;
+   right: 1rem;
+   top: auto;
+   color: #fff;
+   }
+   .card.green .additional .stats {
+   color: #325C46;
+   }
+   .card .additional .stats > div {
+   flex: 1;
+   text-align: center;
+   }
+   .card .additional .stats i {
+   display: block;
+   }
+   .card .additional .stats div.title {
+   font-size: 0.75rem;
+   font-weight: bold;
+   text-transform: uppercase;
+   }
+   .card .additional .stats div.value {
+   font-size: 1.5rem;
+   font-weight: bold;
+   line-height: 1.5rem;
+   }
+   .card .additional .stats div.value.infinity {
+   font-size: 1.5rem;
+   }
+   .card .general {
+   width: 300px;
+   color:#000;
+   height: 100%;
+   position: absolute;
+   top: 0;
+   right: 0;
+   z-index: 1;
+   box-sizing: border-box;
+   padding: 1rem;
+   padding-top: 0;
+   }
+   .card .general .more {
+   position: absolute;
+   bottom: 1rem;
+   right: 1rem;
+   font-size: 0.9em;
+   }
+</style>]]></template>
+    </sp_widget>
+</record_update>

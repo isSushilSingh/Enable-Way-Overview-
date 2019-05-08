@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css/>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>true</has_preview>
+        <id>image_map</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Image Map</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+	//Variable Declaration
+	var MappedsysID="";
+	data.imageMapData=[];
+	
+	var imageLayout=new GlideRecord("x_183208_enableway_image_layouts");
+	imageLayout.addQuery("deployment_type",$sp.getParameter('type'));
+	imageLayout.query();
+	if(imageLayout.next()){
+		MappedsysID=imageLayout.getUniqueValue();
+	}//Getting Unique Id of maped record based on Deployment Type
+	
+	var attachmentImage=new GlideRecord("sys_attachment");
+	attachmentImage.addQuery("table_sys_id",MappedsysID);
+	attachmentImage.query();
+	if(attachmentImage.next()){
+		data.imgsrc=attachmentImage.getUniqueValue()+".iix";
+	}//Getting Mapped Image 
+	
+	imageLayout=new GlideRecord("x_183208_enableway_image_layouts");
+	imageLayout.addQuery("sys_id",MappedsysID);
+	imageLayout.query();
+	if(imageLayout.next()){
+		var mapCoordinates=new GlideRecord("x_183208_enableway_map_coordinates");
+		mapCoordinates.addEncodedQuery("sys_idIN"+imageLayout.getValue("mapcoordinates"));
+		mapCoordinates.query();
+		while(mapCoordinates.next()){
+			var imageData={};
+			imageData.name=mapCoordinates.getDisplayValue("name");
+			if(mapCoordinates.getDisplayValue("link")){
+				imageData.link="enableway?id=eway_kb_article&sys_kb_id="+mapCoordinates.getValue("link");
+			}imageData.shape=mapCoordinates.getDisplayValue("shape");
+			imageData.coords=mapCoordinates.getDisplayValue("coords");
+			data.imageMapData.push(imageData);//Getting Image Data(Name,link and Coordinates)
+		}//while
+	}//OuterIf
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>sushil.s@enableps.com</sys_created_by>
+        <sys_created_on>2019-05-07 06:33:50</sys_created_on>
+        <sys_id>d8e70a81db913300808c5c7a4896194b</sys_id>
+        <sys_mod_count>30</sys_mod_count>
+        <sys_name>Image Map</sys_name>
+        <sys_package display_value="Enable Way Overview" source="x_183208_enableway">5259d537db013300808c5c7a489619a4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Enable Way Overview">5259d537db013300808c5c7a489619a4</sys_scope>
+        <sys_update_name>sp_widget_d8e70a81db913300808c5c7a4896194b</sys_update_name>
+        <sys_updated_by>sushil.s@enableps.com</sys_updated_by>
+        <sys_updated_on>2019-05-08 10:03:39</sys_updated_on>
+        <template><![CDATA[<div>
+   <img src="{{data.imgsrc}}" usemap="#image-map">
+   <map name="image-map">
+     <area ng-repeat="imageData in data.imageMapData" target="_blank" alt={{imageData.name}} title={{imageData.name}} href={{imageData.link}} coords={{imageData.coords}} shape={{imageData.shape}}>
+   </map>
+</div>]]></template>
+    </sp_widget>
+</record_update>

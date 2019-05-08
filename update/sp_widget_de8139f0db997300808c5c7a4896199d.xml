@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sp_widget">
+    <sp_widget action="INSERT_OR_UPDATE">
+        <category>custom</category>
+        <client_script><![CDATA[function() {
+  /* widget controller */
+  var c = this;
+}]]></client_script>
+        <controller_as>c</controller_as>
+        <css>@import "compass/css3";
+
+@import "compass/css3";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,900);
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body{
+  background-color: rgb(33,31,35);
+  background-repeat: no-repeat;
+  @include filter-gradient(#53455b, #201e22, horizontal);
+  @include background-image(radial-gradient(circle at top,  rgba(83,69,91,1) 0,rgba(32,30,34,1) 70%));
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 100%;
+  min-height: 100%;
+  line-height: 1.5;
+  padding: 2.5em 0;
+}
+.container {
+  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+}
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.grid-1-5 {
+  border: 2px solid #5d4e65;   
+  min-height: 250px;
+  padding: 1.25em;
+  position: relative;
+  text-align: center;
+  transition: all .2s ease-in-out;
+  
+  @media screen and (min-width: 700px) {
+    &amp; {
+      float: left;
+      width: 50%;
+    }
+    &amp;:nth-child(odd) {
+      clear: left;
+    }
+  }
+  
+  @media screen and (min-width: 800px) {
+    &amp; {      
+      width: 33.3333333%;
+    }
+    &amp;:nth-child(3n+1) {
+      clear: left;
+    }
+    &amp;:nth-child(odd) {
+      clear: none;
+    }    
+  }
+  
+  @media screen and (min-width: 1120px) {
+    &amp; {
+       width: 20%;
+    }
+    &amp;:nth-child(odd), &amp;:nth-child(3n+1) {
+       clear: none;
+    }    
+  }
+  
+}
+.grid-1-5:hover {
+  background-color: rgb(83,69,91);
+  @include filter-gradient(#53455b, #201d22, vertical);
+  @include background-image(linear-gradient(top,  rgba(83,69,91,1) 0%,rgba(32,29,34,1) 100%));  
+  border-top: 2px solid #ec7a37;
+  border-bottom: 2px solid #ff4f69;
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 1);
+  transform: scale(1.025);
+  z-index: 2;
+
+  &amp;:before, &amp;:after {
+    content: ""; 
+    position: absolute; 
+    background-color: rgb(246,125,53);
+    @include filter-gradient(#f67d35, #ff4f68, vertical);
+    @include background-image(linear-gradient(top,  rgba(246,125,53,1) 0%,rgba(255,79,104,1) 100%));
+    top: -2px; 
+    bottom: -2px; 
+    width: 2px;    
+  }
+
+  &amp;:before { 
+    left: -2px; 
+  }
+  &amp;:after { 
+    right: -2px; 
+  }  
+
+  &amp; .button {
+    background-color: rgb(238,122,54);
+    @include filter-gradient(#ee7a36, #eb495d, horizontal);
+    @include background-image(linear-gradient(left,  rgba(238,122,54,1) 0%,rgba(235,73,93,1) 100%));    
+  }
+}
+h2, h3, p, ul {
+  margin: 0
+}
+h2 {
+  //font-size: 3em;
+  //font-weight: 400;
+  margin: 0 0 0.5em;
+}
+h3 {
+  font-size: 1.5em;
+  letter-spacing: 0.0625em;
+  margin: 0 0 0.3333333333333333em;
+}
+p {
+  font-size: 0.875em;  
+}
+p, ul {
+  margin:0 0 1.5em
+}
+ul {
+  color: #796583;
+  font-size: 0.75em;
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    margin: 0 0 0.8333333333333333em;
+  }
+}
+.button {
+  background-color: #9c83aa;
+  border-radius: 20px;
+  color: #fff;
+  font-size: 1em;
+  font-weight: 700;
+  padding: 0.75em 1.5em;
+  position: absolute;
+  bottom: 1.25em;
+  left: 50%;
+  margin-left: -60px;
+  text-decoration: none;
+  width: 120px;
+}
+.uppercase, .button, h2 {
+  text-transform: uppercase;
+}
+sup, .small {
+  font-size: 0.6125em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.fig-head {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		background-color: $darkblue;
+		text-align: center;
+		padding: 10% 5%;
+		transition: all 0.5s ease;
+	} // fig-head
+
+ul.product-checklist {
+	position: absolute;
+	list-style-type: none;
+	top: 25%;
+	padding: 0 34px;
+	li {
+		position: relative;
+		font-size: 16px;
+    text-align: start;
+		color: #BFBFBF;
+		font-weight: 300;
+		letter-spacing: 0px;
+		line-height: 25px;
+    margin-bottom: 25px;
+		-webkit-font-smoothing: antialiased;
+		&amp;:nth-last-of-type(1) {
+			margin-bottom: 0;
+		}
+	} // li
+	li.check {
+		color: $darkblue;
+		font-weight: 400;
+		&amp;:before {
+			content: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAOCAYAAADwikbvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMRJREFUeNpiYCADaDbsVADRjGRonA+kAoDYkZFEjQlAaj6U+4GJTI0gUMhIpEYDIHUeSSjxeoP7AiYiNe5HEloA0kgwwKChCrJRAEljIkyeCaooAIgF0DSC+OuRNB5A1gjWDA0IkKL9MAOgNMipBlB1F4A4EN1ljECF75FMBylyhIZqALIY0NYP6JqZoIphEiCb7iNp/AAN2Q/YwoQRLUSR/f0BauMFXAHKiCVKYAaANB7AFxvweIba4Ijk1AOE0gBAgAEAgNJJfyEiUycAAAAASUVORK5CYII=');
+			position: absolute;
+			left: -34px;
+			top: 3px;
+		} // :before
+	} // li.check
+} // ul.product-checklist</css>
+        <data_table>sp_instance</data_table>
+        <demo_data/>
+        <description/>
+        <docs/>
+        <field_list/>
+        <has_preview>false</has_preview>
+        <id>project_top</id>
+        <internal>false</internal>
+        <link><![CDATA[function link(scope, element, attrs, controller) {
+  
+}]]></link>
+        <name>Project Top</name>
+        <option_schema/>
+        <public>true</public>
+        <roles/>
+        <script><![CDATA[(function() {
+  /* populate the 'data' object */
+  /* e.g., data.table = $sp.getValue('table'); */
+
+})();]]></script>
+        <servicenow>false</servicenow>
+        <sys_class_name>sp_widget</sys_class_name>
+        <sys_created_by>sushil.s@enableps.com</sys_created_by>
+        <sys_created_on>2019-05-06 10:17:41</sys_created_on>
+        <sys_id>de8139f0db997300808c5c7a4896199d</sys_id>
+        <sys_mod_count>20</sys_mod_count>
+        <sys_name>Project Top</sys_name>
+        <sys_package display_value="Enable Way Overview" source="x_183208_enableway">5259d537db013300808c5c7a489619a4</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Enable Way Overview">5259d537db013300808c5c7a489619a4</sys_scope>
+        <sys_update_name>sp_widget_de8139f0db997300808c5c7a4896199d</sys_update_name>
+        <sys_updated_by>sushil.s@enableps.com</sys_updated_by>
+        <sys_updated_on>2019-05-06 10:47:38</sys_updated_on>
+        <template><![CDATA[<div>
+  	<div class="container group">
+		<div class="grid-1-5">
+			<div class="fig-head">
+        <h2>Initiate</h2>
+      </div>
+      <ul class="product-checklist">
+        <li class="check">Project Planning</li>
+        <li class="check">Prepare for Kickoffs and workshops</li>
+      </ul>
+		</div>
+		<div class="grid-1-5">
+			<div class="fig-head">
+        <h2>Prepare</h2>
+      </div>
+      <ul class="product-checklist">
+        <li class="check">Gather Requirements</li>
+        <li class="check">Design the configurations</li>
+      </ul>
+		</div>
+		<div class="grid-1-5">
+      <div class="fig-head">
+        <h2>Create</h2>
+      </div>
+      <ul class="product-checklist">
+        <li class="check">Build in Sprints</li>
+      </ul>
+		</div>
+		<div class="grid-1-5">
+      <div class="fig-head">
+        <h2>Transition</h2>
+      </div>
+      <ul class="product-checklist">
+        <li class="check">Test</li>
+        <li class="check">Release</li>
+      </ul>
+		</div>
+		<div class="grid-1-5">
+			<div class="fig-head">
+        <h2>Close</h2>
+      </div>
+      <ul class="product-checklist">
+        <li class="check">Review value</li>
+      </ul>
+		</div>		
+	</div>
+</div>]]></template>
+    </sp_widget>
+</record_update>
